@@ -25,13 +25,13 @@ function ON_DRIVER_INIT.proxy_init()
 	SetControlMethod()
 
 	-- instantiate the camera proxy class
-	gCameraProxy = CameraProxy:new(DEFAULT_PROXY_BINDINGID)
+	gIpProxy = IpProxy:new(DEFAULT_PROXY_BINDINGID)
 end
 
 function ON_DRIVER_LATEINIT.proxy_init()
-    C4:urlSetTimeout (20)
+--    C4:urlSetTimeout (20)
 
-	gCameraProxy:dev_PropertyDefaults()
+--	gCameraProxy:dev_PropertyDefaults()
 end
 
 function IP_DEVICES_ADDR.init()

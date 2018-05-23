@@ -9,6 +9,7 @@ if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.properties = "2017.01.13"
 end
 
+--[[
 function ON_PROPERTY_CHANGED.MJPEGStreamID(propertyValue)
 	gCameraProxy._MJPEG_Stream_ID = tonumber(propertyValue)
 end
@@ -48,3 +49,4 @@ end
 function ON_PROPERTY_CHANGED.H2644KStreamProfile(propertyValue)
 	gCameraProxy._H264_4K_Stream_Profile = propertyValue
 end
+]]

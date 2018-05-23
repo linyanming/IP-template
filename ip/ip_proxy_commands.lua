@@ -1,14 +1,15 @@
 --[[=============================================================================
     Command Functions Received From Proxy to the Camera Driver
 
-    Copyright 2016 Control4 Corporation. All Rights Reserved.
+    Copyright 2018 Hiwise Corporation. All Rights Reserved.
 ===============================================================================]]
 
 -- This macro is utilized to identify the version string of the driver template version used.
 if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.camera_proxy_commands = "2016.01.08"
+	TEMPLATE_VERSION.ip_proxy_commands = "2018.05.23"
 end
 
+--[[
 function PRX_CMD.SET_ADDRESS(idBinding, tParams)
 	gCameraProxy:prx_SET_ADDRESS(tParams)
 end
@@ -99,3 +100,4 @@ function UI_REQ.GET_RTSP_H264_QUERY_STRING(tParams)
 	return gCameraProxy:req_GET_RTSP_H264_QUERY_STRING(tParams)
 end
 
+]]

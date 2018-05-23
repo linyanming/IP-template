@@ -12,7 +12,7 @@ end
 --[[
 	Implement the following commands as required by capabilities. 
 --]]
-
+--[[
 function PAN_LEFT()
 	-- TODO: Set the value of the PAN_LEFT command
 	local command = "" 
@@ -102,55 +102,9 @@ function HOME()
 	
 	LogTrace("HOME(): Ticket = " .. ticket .. " URL = " .. url)
 end
+]]
 
-function MOVE_TO(width, height, x_index, y_index)
-	-- TODO: Set the value of the MOVE_TO command
-	local command = ""
-	
-	-- NOTE: Even if your camera does not support a true Move To command you must complete this function in order for the Left, Right, Up and Down functions to work.
-
-	-- TRUE MOVE_TO
-	-- If your camera supports true move to commands then you will need to do some math based on the position co-ordinates that come from the UI.
-	-- Use the variables width, height, x_index and y_index
-	-- local url = gCameraProxy.BuildHTTPURL(command)
-	-- local ticket = gCon:UrlGet(gCameraProxy:BuildGetRequest(url), gCameraProxy:AuthHeader())
-	-- LogTrace("PRX_CMD.MOVE_TO: Ticket = " .. ticket .. " URL = " .. url)
-
-	-- LEFT, RIGHT, UP and DOWN only
-	-- This code will combine pan/tilt commands to move the camera
-    --[[
-	x_index = (x_index - (width / 2)) / (width / 2)
-	y_index = ((height / 2) - y_index) / (height/ 2)
-
-	if (x_index < -0.6) then -- Left
-		PAN_LEFT()
-        PAN_LEFT()
-    elseif (x_index < -0.2) then -- Left
-		PAN_LEFT()
-	end
-    
-	if (y_index < -0.6) then -- Down
-		TILT_DOWN()
-    	TILT_DOWN()
-    elseif (y_index < -0.2) then -- Down
-		TILT_DOWN()
-	end
-    
-	if (x_index > 0.6) then -- Right
-		PAN_RIGHT()
-    	PAN_RIGHT()
-    elseif (x_index > 0.2) then -- Right
-		PAN_RIGHT()
-	end
-    
-	if (y_index > 0.6) then -- Up
-		TILT_UP()
-    	TILT_UP()
-    elseif (y_index > 0.2) then -- Up
-		TILT_UP()
-	end
-    --]]
-end
+--[[
 
 function PRESET(index)
 	-- TODO: Set the value of the PRESET command
@@ -161,11 +115,12 @@ function PRESET(index)
 	
 	LogTrace("PRESET(" .. tostring(index) .. "): Ticket = " .. ticket .. " URL = " .. url)
 end
-
+]]
 -- UI Requests
 --[[
 	Return the query string required for an HTTP snapshot URL request.
 --]]
+--[[
 function GET_SNAPSHOT_QUERY_STRING(size_x, size_y)
 	-- TODO: Set the URL query string between the quotes.  Remember there should be no leading /
 	-- If the camera has the ability to send a snapshot of a particular size then use the size_x and size_y variables in the query.
@@ -173,10 +128,11 @@ function GET_SNAPSHOT_QUERY_STRING(size_x, size_y)
 
 	return snapshotQueryString
 end
-
+]]
 --[[
 	Return the query string required for an MJPEG HTTP image push URL request.
 --]]
+--[[
 function GET_MJPEG_QUERY_STRING(size_x, size_y, period)
     local mjpegQueryString = ""
     
@@ -196,10 +152,11 @@ function GET_MJPEG_QUERY_STRING(size_x, size_y, period)
 
 	return mjpegQueryString
 end
-
+]]
 --[[
 	Return the query string required to establish Rtsp connection.
 --]]
+--[[
 function GET_RTSP_H264_QUERY_STRING(size_x, size_y, period)
     local rtspH264QueryString = ""
     
@@ -239,4 +196,4 @@ function GET_RTSP_H264_QUERY_STRING(size_x, size_y, period)
 	
 	return rtspH264QueryString
 end
-
+]]

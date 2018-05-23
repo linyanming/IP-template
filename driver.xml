@@ -8,56 +8,38 @@
   <name>IP Proxy Template</name>
   <model>IP Proxy Template</model>
   <created>05/19/2018 8:30 AM</created>
-  <modified>05/22/2018 10:27 AM</modified>
+  <modified>05/23/2018 9:33 AM</modified>
   <!-- 
 	Each time you modify the driver update the version number below.
 	-->
-  <version>22</version>
+  <version>24</version>
   <capabilities>
     <!-- 
 		These are the modes the camera might support.  If the camera does not support H264 then remove the H264 entries
 		If H264I is not supported just remove that entry.  Cameras must support MJPEG in order to be displayed on Flash based UIs.
 		-->
-    <modes>SNAPSHOT, MJPEG, H264, H264I</modes>
     <!-- 
 		This driver assumes a static camera.  For PTZ cameras change the supported capabilities below to True.
 		Then complete the corresponding functions in the Lua code.
 		-->
-    <has_pan>False</has_pan>
-    <has_pan_scan>False</has_pan_scan>
-    <has_tilt>False</has_tilt>
-    <has_tilt_scan>False</has_tilt_scan>
-    <has_home>False</has_home>
-    <has_zoom>False</has_zoom>
-    <number_presets>0</number_presets>
     <!-- 
 		This is the default port number that you access the camera's images on.  If you just type a URL without a port number then the port number is the standard 80.
 		For the H264 stream this is often accessed using RTSP.  The default port number for this is 554 unless stated otherwise in the camera's documentation.
 		-->
-    <default_http_port>80</default_http_port>
-    <default_rtsp_port>554</default_rtsp_port>
     <!-- 
 		If the camera requires a username and password to access the streams (most do) then complete the default values below.
 		-->
-    <default_authentication_required>False</default_authentication_required>
-    <default_authentication_type>BASIC</default_authentication_type>
     <!--default_authentication_type>DIGEST</default_authentication_type-->
-    <default_username>username</default_username>
-    <default_password>password</default_password>
     <!-- 
 		Unless the camera uses SDDP and you wish to make the connections on the Network tab leave both the below as False.
 		-->
-    <address_readonly>False</address_readonly>
-    <http_port_readonly>False</http_port_readonly>
     <!-- 
 		Unless you wish to hide the details of the URLs on the test page leave the following as false.
 		-->
-    <show_test_url>True</show_test_url>
     <!-- 
 		Most cameras provide their H264 stream over RTSP.  Check the camera documentation and if its URI is in the form RTSP://XXX.XXX.XXX.XXX keep the below false.
 		If the H264 stream does not appear or the documentation states it is accessed over HTTP then set the below to True.
 		-->
-    <use_http_for_h264>False</use_http_for_h264>
   </capabilities>
   <small>devices_sm\camera_sm.gif</small>
   <large>devices_lg\camera_lg.gif</large>
@@ -130,7 +112,7 @@
         <name>Log Level</name>
         <type>LIST</type>
         <readonly>false</readonly>
-        <default>2 - Warning</default>
+        <default>5 - Trace</default>
         <items>
           <item>0 - Fatal</item>
           <item>1 - Error</item>
@@ -157,81 +139,11 @@
                 properties can be used to set which stream to use for specific resolutions or type. If the camera does not support 
                 multiple stream configurations using stream IDs, then the Stream ID properties can be removed.
             -->
-      <property>
-        <name>MJPEG Stream ID</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>1</default>
-        <minimum>1</minimum>
-        <maximum>4</maximum>
-      </property>
-      <property>
-        <name>H264 Stream ID</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>1</default>
-        <minimum>1</minimum>
-        <maximum>4</maximum>
-      </property>
-      <property>
-        <name>H264 720p Stream ID</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>1</default>
-        <minimum>1</minimum>
-        <maximum>4</maximum>
-      </property>
-      <property>
-        <name>H264 1080p Stream ID</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>1</default>
-        <minimum>1</minimum>
-        <maximum>4</maximum>
-      </property>
-      <property>
-        <name>H264 4K Stream ID</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>1</default>
-        <minimum>1</minimum>
-        <maximum>4</maximum>
-      </property>
       <!-- 
                 If the camera supports multiple stream configurations that can be selected by a profile name, then the following
                 properties can be used to set which stream to use for specific resolutions or type. If the camera does not support 
                 multiple stream configurations using profiles, then the Stream Profile properties can be removed.
             -->
-      <property>
-        <name>MJPEG Stream Profile</name>
-        <type>STRING</type>
-        <readonly>false</readonly>
-        <default>MJPEG</default>
-      </property>
-      <property>
-        <name>H264 Stream Profile</name>
-        <type>STRING</type>
-        <readonly>false</readonly>
-        <default>H264</default>
-      </property>
-      <property>
-        <name>H264 720p Stream Profile</name>
-        <type>STRING</type>
-        <readonly>false</readonly>
-        <default>H264_720p</default>
-      </property>
-      <property>
-        <name>H264 1080p Stream Profile</name>
-        <type>STRING</type>
-        <readonly>false</readonly>
-        <default>H264_1080p</default>
-      </property>
-      <property>
-        <name>H264 4K Stream Profile</name>
-        <type>STRING</type>
-        <readonly>false</readonly>
-        <default>H264_4K</default>
-      </property>
       <property>
         <name>Port</name>
         <type>RANGED_INTEGER</type>
